@@ -1,0 +1,107 @@
+## Git学习
+
+### Git概念
+
+#### Git定义
+
+​	Git是分布式版本控制系统.
+
+#### 集中式VS分布式:
+
+​	集中式版本控制系统(SVN)：由一个中央服务器保存版本信息，通过网络上传下载，速度慢，如果中间服务器出现问题或者网络出现问题，开发将进入暂缓或者停滞状态。本地条件下也无法完成代码回退的功能。
+
+![](D:\soft\git\图片\2019-01-24_100407.png)
+
+​	分布式版本控制系统(Git)：中英服务器起到一个辅助保存作用，每个电脑都保存有版本信息。
+
+![](D:\soft\git\图片\2019-01-24_100520.png)
+
+#### Git安装设置
+
+```markdown
+#声明git的用户的名字和邮箱
+1. $ git config --global user.name "Your Name"
+2. $ git config --global user.email "email@example.com"
+```
+
+### Git指令
+
+#### Git常用简单指令
+
+```markdown
+1. $ git init 初始化版本库
+2. $ git add XXX 将文件修改添加至暂存区
+3. $ git commit | $ git commit -m "XXX" 将暂存区的所有内容提交至版本库
+4. $ git status 查看版本库状态
+			红色: 未添加
+			绿色: 未提交
+			working tree clean: 已提交
+```
+
+#### Git版本回退
+
+```markdown
+1. $ git log 查看历史版本日志 展示详细的信息
+	$ git log --pretty=oneline 展示精简版历史日志信息
+2. $ git reset --hard 版本号 回溯某个版本 既可以向前 也可以向后
+3. $ git reflog 查看所有版本日志信息 包括版本回溯的信息
+```
+
+#### Git工作区版本库
+
+![](D:\soft\git\图片\2019-01-24_113105.png)
+
+#### Git的撤销修改
+
+```markdown
+1. $ git checkout XXX 撤销工作区的修改
+2. $ git reset head XXX 撤销暂存区的修改
+```
+
+#### Git的分支管理
+
+```markdown
+1. $ git checkout -b dev 创建分支切切换至dev分支
+	= $ git branch dev 创建分支 + $ git checkout dev 切换分支
+2. $ git checkout master 切换回主干分支 准备合并
+3. $ git merge dev 合并分支
+4. $ git branch -d dev 删除分支
+		当分支合并时有文件冲突的时候
+		1. git merge dev 合并分支
+		2. git status 冲突的文件 是红色显示
+		3. 多人协商 解决冲突 
+		4. git add | git commit 
+		最终将冲突文件保存在版本库中
+```
+
+#### Git的远程仓库
+
+```markdown
+1. $ git remote add origin URL 与远程仓库建立连接
+2. $ git push (-u) origin master 第一次推送需要使用-u参数 推送本地文件
+3. $ git pull origin master 把远程库代码拉下来
+4. $ git remote remove origin 接触与远程仓库的连接
+		远程仓库代码冲突问题
+		1. $ git push origin master 报错
+		// $ git push -f origin master 强制推送
+		2. $ git pull origin master 把远程库代码拉下来
+		3. 手动在本地解决冲突问题 | git add | git commit 
+		4. $ git push origin master
+5. SSH 免密推送
+		1.$ ssh-keygen -t rsa -C "邮箱" 生成公钥(敲回车 输出y)
+		2.在C:\Users\Administrator\.ssh文件夹中找到id_rsa.pub
+		3.将id_rsa.pub中的公钥配置在远程仓库的SSH公钥位置
+6. $ git clone URL 下载远程仓库至本地
+```
+
+#### Git与Idea的集成
+
+```markdown
+1. 在Setting中选择git的位置
+2. 打开版本控制 VCS -- > Enable Version Controll -- > git
+3. VCS -- > Add | Commit
+4. 在Setting中搜索Terminal 将cmd.exe 更换为 sh.exe
+5. 使用命令的形式进行版本控制
+6. 如需关闭版本控制 在.idea文件夹中删除vcs.xml
+```
+
