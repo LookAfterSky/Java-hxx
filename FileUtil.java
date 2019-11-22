@@ -7,23 +7,23 @@ import java.util.List;
 
 /**
  * @program: check-data
- * @description: ÎÄ¼þ²Ù×÷¹¤¾ßÀà£¨Ò»£©»ñÈ¡ËùÓÐÎÄ¼þÒÔ¼°É¾³ýÄ¿Â¼ÄÚËùÓÐÄÚÈÝµÄ²Ù×÷
+ * @description: ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½à£¨Ò»ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ô¼ï¿½É¾ï¿½ï¿½Ä¿Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÝµÄ²ï¿½ï¿½ï¿½
  * @author: HXX
  * @create: 2019-06-19 15:11
  **/
 public class FileUtil {
-    //Ë½ÓÐ¹¹Ôì
+    //Ë½ï¿½Ð¹ï¿½ï¿½ï¿½
     private FileUtil(){
 
     }
-    //»ñÈ¡È«²¿ÎÄ¼þ
+    //ï¿½ï¿½È¡È«ï¿½ï¿½ï¿½Ä¼ï¿½
     public static List<File> findAllFiles(File dir){
         List<File> fileList = new ArrayList<>();
         if (!dir.exists()){
-            throw new IllegalArgumentException("Ä¿Â¼"+dir+"²»´æÔÚ£¡");
+            throw new IllegalArgumentException("Ä¿Â¼"+dir+"ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½");
         }
         if (!dir.isDirectory()){
-            throw new IllegalArgumentException(dir+"²»ÊÇÄ¿Â¼!");
+            throw new IllegalArgumentException(dir+"ï¿½ï¿½ï¿½ï¿½Ä¿Â¼!");
         }
         List<File> dirList = new LinkedList<>();
         File[] files = dir.listFiles();
@@ -57,7 +57,7 @@ public class FileUtil {
         }
     }
 
-    //É¾³ýËùÓÐÎÄ¼þºÍÎÄ¼þ¼Ð
+    //É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
     public static void deleteAllDir(File dir){
         LinkedList<File> dirList = new LinkedList<>();
         List<File> fileList = FileUtil.findAllFiles(dir);
@@ -80,7 +80,7 @@ public class FileUtil {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        File file = new File("C:\\Users\\HXX\\Desktop\\²âÊÔ\\data");
+        File file = new File("C:\\Users\\HXX\\Desktop\\data");
         deleteAllDir(file);
         long end = System.currentTimeMillis();
         System.out.println(end - start);
